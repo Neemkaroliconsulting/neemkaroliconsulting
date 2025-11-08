@@ -5,7 +5,7 @@
         <field name="inherit_id" ref="product.product_template_form_view"/>
         <field name="arch" type="xml">
 
-            <!-- Add new Packaging Info tab inside notebook -->
+            <!-- Inside notebook to add tab -->
             <xpath expr="//notebook" position="inside">
                 <page string="Packaging Info">
                     <field name="packaging_line_ids">
