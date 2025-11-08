@@ -4,15 +4,9 @@ class ProductPackagingLine(models.Model):
     _name = 'product.packaging.line'
     _description = 'Product Packaging Line'
 
-    product_tmpl_id = fields.Many2one(
-        'product.template',
-        string='Product',
-        ondelete='cascade',
-        index=True
-    )
-
+    product_tmpl_id = fields.Many2one('product.template', string='Product', ondelete='cascade')
     length = fields.Float('Length (cm)')
-    width = fields.Float('Breadth (cm)')
+    width = fields.Float('Width (cm)')
     height = fields.Float('Height (cm)')
     net_weight = fields.Float('Net Weight (kg)')
     gross_weight = fields.Float('Gross Weight (kg)')
@@ -22,12 +16,9 @@ class ProductPackagingLine(models.Model):
     @api.depends('length', 'width', 'height')
     def _compute_cbm(self):
         for rec in self:
-            if rec.length and rec.width and rec.height:
-                rec.cbm = (rec.length * rec.width * rec.height) / 1000000.0
-            else:
-                rec.cbm = 0.0
+            rec.cbm = (rec.length * rec.width * rec.height) / 1000000 if rec.length and rec.width and rec.height else 0.0
 
     @api.depends('cbm')
     def _compute_cft(self):
         for rec in self:
-            rec.cft = rec.cbm * 35.3146667 if rec.cbm else 0.0
+            rec.cft = rec.cbm * 35.3147 if rec.cbm else 0.0
