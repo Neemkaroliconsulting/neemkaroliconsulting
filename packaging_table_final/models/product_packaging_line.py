@@ -14,7 +14,7 @@ class ProductPackagingLine(models.Model):
     cbm = fields.Float('CBM (m³)', compute='_compute_cbm', store=True)
     cft = fields.Float('CFT', compute='_compute_cbm', store=True)
 
-    @api.depends('length_cm', 'width_cm', 'height_cm')
+    @api.depends( 'width_cm', 'height_cm')
     def _compute_cbm(self):
         for rec in self:
             if rec.width_cm and rec.height_cm:
