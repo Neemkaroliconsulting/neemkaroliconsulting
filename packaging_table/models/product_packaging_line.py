@@ -8,7 +8,7 @@ class ProductPackagingLine(models.Model):
         'product.template', string='Product', ondelete='cascade'
     )
 
-    length = fields.Float('Length (cm)')
+    packaging_length = fields.Float('Length (cm)')
     width = fields.Float('Width (cm)')
     height = fields.Float('Height (cm)')
     net_weight = fields.Float('Net Weight (kg)')
