@@ -4,6 +4,8 @@
         <field name="model">product.template</field>
         <field name="inherit_id" ref="product.product_template_form_view"/>
         <field name="arch" type="xml">
+
+            <!-- Add new Packaging Info tab inside notebook -->
             <xpath expr="//notebook" position="inside">
                 <page string="Packaging Info">
                     <field name="packaging_line_ids">
@@ -19,6 +21,7 @@
                     </field>
                 </page>
             </xpath>
+
         </field>
     </record>
 </odoo>

@@ -8,16 +8,11 @@ class ProductPackagingLine(models.Model):
         'product.template', string='Product', ondelete='cascade'
     )
 
-    # dimensions
     length_cm = fields.Float('Length (cm)')
     width_cm = fields.Float('Width (cm)')
     height_cm = fields.Float('Height (cm)')
-
-    # weights
     net_weight = fields.Float('Net Weight (kg)')
     gross_weight = fields.Float('Gross Weight (kg)')
-
-    # computed fields
     cbm = fields.Float('CBM (m³)', compute='_compute_cbm_cft', store=True)
     cft = fields.Float('CFT', compute='_compute_cbm_cft', store=True)
 
