@@ -4,7 +4,10 @@ class ProductPackagingLine(models.Model):
     _name = 'product.packaging.line'
     _description = 'Product Packaging Line'
 
-    product_tmpl_id = fields.Many2one('product.template', string='Product', ondelete='cascade')
+    product_tmpl_id = fields.Many2one(
+        'product.template', string='Product', ondelete='cascade'
+    )
+
     length = fields.Float('Length (cm)')
     width = fields.Float('Width (cm)')
     height = fields.Float('Height (cm)')
