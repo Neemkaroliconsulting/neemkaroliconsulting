@@ -19,8 +19,8 @@ class ProductPackagingLine(models.Model):
     @api.depends('length', 'width', 'height')
     def _compute_cbm_cft(self):
         for rec in self:
-            if rec.length and rec.width and rec.height:
-                rec.cbm = (rec.length * rec.width * rec.height) / 1000000.0
+            if rec.packaging_length and rec.width and rec.height:
+                rec.cbm = (rec.packaging_length * rec.width * rec.height) / 1000000.0
                 rec.cft = rec.cbm * 35.315
             else:
                 rec.cbm = 0.0
