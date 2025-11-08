@@ -1,15 +1,13 @@
 <odoo>
-    <record id="view_product_form_packaging_table" model="ir.ui.view">
-        <field name="name">product.template.form.packaging.table</field>
+    <record id="view_product_form_packaging_multi" model="ir.ui.view">
+        <field name="name">product.template.form.packaging.multi</field>
         <field name="model">product.template</field>
         <field name="inherit_id" ref="product.product_template_form_view"/>
         <field name="arch" type="xml">
-            <!-- Add a new page under notebook -->
             <xpath expr="//notebook" position="inside">
                 <page string="Packaging Info">
-                    <field name="packaging_line_ids" context="{'default_product_tmpl_id': active_id}">
+                    <field name="packaging_line_ids">
                         <tree editable="bottom">
-                            <field name="item_level"/>
                             <field name="length"/>
                             <field name="width"/>
                             <field name="height"/>
