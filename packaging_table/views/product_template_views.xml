@@ -9,7 +9,7 @@
                 <page string="Packaging Info">
                     <field name="packaging_line_ids" context="{'default_product_tmpl_id': active_id}">
                         <tree editable="bottom">
-                            <field name="length"/>
+                            <field name="packaging_length"/>
                             <field name="width"/>
                             <field name="height"/>
                             <field name="net_weight"/>
