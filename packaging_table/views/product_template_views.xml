@@ -6,6 +6,7 @@
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
                 <page string="Packaging Info">
+                    <!-- One2many table starts here -->
                     <field name="packaging_line_ids">
                         <tree editable="bottom">
                             <field name="item_level"/>
@@ -18,6 +19,7 @@
                             <field name="cft" readonly="1"/>
                         </tree>
                     </field>
+                    <!-- One2many ends here -->
                 </page>
             </xpath>
         </field>

@@ -27,7 +27,7 @@ class ProductPackagingLine(models.Model):
     def _compute_cbm(self):
         for rec in self:
             if rec.length and rec.width and rec.height:
-                rec.cbm = (rec.length * rec.width * rec.height) / 1000000.0
+                rec.cbm = (rec.length * rec.width * rec.height) / 1000000
             else:
                 rec.cbm = 0.0
 
