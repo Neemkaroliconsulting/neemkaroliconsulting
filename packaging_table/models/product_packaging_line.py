@@ -8,20 +8,25 @@ class ProductPackagingLine(models.Model):
         'product.template', string='Product', ondelete='cascade'
     )
 
-    packaging_length = fields.Float('Length (cm)')
-    width = fields.Float('Width (cm)')
-    height = fields.Float('Height (cm)')
+    # dimensions
+    length_cm = fields.Float('Length (cm)')
+    width_cm = fields.Float('Width (cm)')
+    height_cm = fields.Float('Height (cm)')
+
+    # weights
     net_weight = fields.Float('Net Weight (kg)')
     gross_weight = fields.Float('Gross Weight (kg)')
+
+    # computed fields
     cbm = fields.Float('CBM (m³)', compute='_compute_cbm_cft', store=True)
     cft = fields.Float('CFT', compute='_compute_cbm_cft', store=True)
 
-    @api.depends('length', 'width', 'height')
+    @api.depends('length_cm', 'width_cm', 'height_cm')
     def _compute_cbm_cft(self):
         for rec in self:
-            if rec.packaging_length and rec.width and rec.height:
-                rec.cbm = (rec.packaging_length * rec.width * rec.height) / 1000000.0
+            if rec.length_cm and rec.width_cm and rec.height_cm:
+                rec.cbm = (rec.length_cm * rec.width_cm * rec.height_cm) / 1000000
                 rec.cft = rec.cbm * 35.315
             else:
-                rec.cbm = 0.0
-                rec.cft = 0.0
+                rec.cbm = 0
+                rec.cft = 0
